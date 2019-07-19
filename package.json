@@ -1,17 +1,29 @@
 {
   "name": "dicepoker-game",
-  "version": "0.1.0",
-  "private": true,
+  "author": "Daniel Santana",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danielrsantana/dicepoker-gamer.git"
+  },
   "dependencies": {
+    "classnames": "^2.2.5",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "shortid": "^2.2.14",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
