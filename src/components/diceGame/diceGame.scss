@@ -1,0 +1,164 @@
+.diceGame {
+    padding: 50px;
+
+    .diceGameBody {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: white;
+
+        .bodyContent {
+            background-color: whitesmoke;
+
+            .spinnerRow {
+                display: inline-block;
+
+                .spinnerColumn {
+                    text-align: center;
+                }
+            }
+
+            &.playerSelection {
+                padding: 15px 25px;
+
+                .playerSelectionInput {
+                    padding: 2rem 0;
+
+                    input, select {
+                        display: block;
+                        width: 100%;
+                        text-align: left;
+                    }
+
+                    label {
+                        color: darkblue;
+                        font-weight: 600;
+                        font-size: x-large;
+                    }
+
+                    select {
+                        box-sizing: border-box;
+                        border: 2px solid #ccc;
+                        border-radius: 4px;
+                        font-size: x-large;
+                        padding: 12px 20px 12px 40px;
+                    }
+                }
+            }
+
+            .playersGame {
+                .player {
+                    padding: 10px;
+                    margin: 10px;
+                    color: black;
+                    text-align: center;
+
+                    .playerName {
+                        font-weight: 600;
+
+                        &.winner {
+                            background-color: lightgreen;
+                            border-radius: 10px;
+                            width: 100%;
+
+                            &.masterVictory {
+                                border: 1px solid red;
+                                background-color: darkgoldenrod;
+                            }
+                        }
+                    }
+
+                    .playerDices {
+                        margin-top: 10px;
+
+                        .dice {
+                            margin: 5px;
+                            width: 30px;
+                            font-family: 'Courier New';
+                            color: midnightblue;
+                            text-shadow: 0 0 3px #FF0000;
+                            font-size: x-large;
+                            padding: 5px;
+                            background-color: lightgray;
+                        }
+                    }
+
+                    .playerHand {
+                        margin-top: 10px;
+                        background-color: whitesmoke;
+                        border-radius: 10px;
+                        display: inline-block;
+                        width: 80%;
+                        padding: 0 15px;
+                    }
+                }
+            }
+        }
+
+        .diceGameControls {
+            margin-top: 20px;
+
+            .button {
+                margin-right: 20px;
+            }
+        }
+
+        .row {
+            display: flex;
+
+            .column {
+                flex: 1;
+                float: left;
+                vertical-align: middle;
+                margin: auto;
+            }
+
+            img {
+                width: 100%;
+                max-width: 100%;
+                max-height: 450px;
+            }
+        }
+
+        .bodyMessage {
+            color: midnightblue;
+            text-shadow: 0 0 3px #FF0000;
+            font-size: xx-large;
+        }
+    }
+
+    .bordered {
+        border: 1px solid gray;
+        border-radius: 8px;
+        padding: 15px;
+    }
+
+    .shadowed {
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    }
+
+    .spinner {
+        padding: 30px;
+    }
+
+    .unselectableText {
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+    }
+}
+
+@keyframes diceGameSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
