@@ -11,14 +11,15 @@ import './diceGame.scss';
 
 const WELCOME_MESSAGE = 'Welcome to Dice Poker Game!';
 const SELECT_PLAYERS_MESSAGE = 'Inform the number of players';
-const MATCH_MESSAGE = "Player's Match";
-const WINNER_MESSAGE = "Winner";
-const NEW_GAME_BUTTON_TEXT = "New Game";
-const START_GAME_BUTTON_TEXT = "Start";
-const PLAY_AGAIN_BUTTON_TEXT = "Play Again";
-const FINISH_MATCH_BUTTON_TEXT = "End Match";
+const MATCH_MESSAGE = `Player's Match`;
+const WINNER_MESSAGE = 'Winner';
+const NEW_GAME_BUTTON_TEXT = 'New Game';
+const START_GAME_BUTTON_TEXT = 'Start';
+const PLAY_AGAIN_BUTTON_TEXT = 'Play Again';
+const FINISH_MATCH_BUTTON_TEXT = 'End Match';
 const MIN_PLAYERS_NUMBER = 2;
 const MAX_PLAYERS_NUMBER = 5;
+const DEFAULT_PLAYERS_SELECTOR = 'DEFAULT';
 
 const GAME_PHASES = {
     NotStarted: 1,
@@ -32,7 +33,7 @@ class DiceGame extends Component {
 
         this.state = {
             gamePhase: GAME_PHASES.NotStarted,
-            numberOfPlayers: null,
+            numberOfPlayers: DEFAULT_PLAYERS_SELECTOR,
         };
 
         this.onPlayAgainClicked = this.onPlayAgainClicked.bind(this);
@@ -113,8 +114,7 @@ class DiceGame extends Component {
             options.push(
                 <option
                     value={index}
-                    key={`option-${shortid.generate()}`}
-                    selected={numberOfPlayers === index}>
+                    key={`option-${shortid.generate()}`}>
                     {index} Players
                     </option>);
         }
@@ -129,7 +129,10 @@ class DiceGame extends Component {
                     </div>
                     <div className="row">
                         <div className="playerSelectionInput column">
-                            <select id="player" onChange={this.onPlayersNumberChanged}>
+                            <select id="player" 
+                                value={numberOfPlayers}
+                                onChange={this.onPlayersNumberChanged}>
+                                <option value={DEFAULT_PLAYERS_SELECTOR}>Select</option>
                                 {options}
                             </select>
                         </div>
@@ -153,7 +156,7 @@ class DiceGame extends Component {
 
         const winnerPoints = Math.max(...playerList.map(player => player.info.points), 0);
 
-        playerList.map((playerItem, index) => {
+        playerList.forEach((playerItem, index) => {
             let header = `Player: ${index}`;
             let isWinner = false;
 
@@ -163,7 +166,7 @@ class DiceGame extends Component {
             }
 
             const playerDices = [];
-            playerItem.dices.map(dice => {
+            playerItem.dices.forEach(dice => {
                 playerDices.push(<div className="dice column bordered shadowed" key={`div-${shortid.generate()}`}>{dice.text}</div>);
             });
 

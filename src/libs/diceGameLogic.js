@@ -66,7 +66,7 @@ const RESULTS = {
 /* Returns an object with diceList and info of player hand  */
 export function getPlayer() {
     const diceList = [];
-    [...Array(5)].map((item, i) => {
+    [...Array(5)].forEach((item, i) => {
         const randomIndex = Math.floor(Math.random() * AVAILABLE_DICES.length);
         diceList.push(AVAILABLE_DICES[randomIndex]);
     });
@@ -86,7 +86,7 @@ function countRepetitions(diceList, diceToCheck) {
 function getRepeatedDices(diceList) {
     const repeatedDices = [];
 
-    diceList.map(dice => {
+    diceList.forEach(dice => {
         const numberOfOccurrencies = diceList.filter(item => item.text === dice.text).length;
         if (numberOfOccurrencies > 1 && !repeatedDices.some(item => item.text === dice.text)) {
             repeatedDices.push(dice);
@@ -138,7 +138,7 @@ function getDiceInfo(diceList) {
         if (firstDiceValue === 9 || firstDiceValue === 10) {
             let previousDice = null;
 
-            diceList.map(dice => {
+            diceList.forEach(dice => {
                 if (previousDice === null) {
                     previousDice = dice;
                 } else if (previousDice.value + 1 === dice.value + 1) {
